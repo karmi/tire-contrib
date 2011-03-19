@@ -6,13 +6,24 @@ Gem::Specification.new do |s|
   s.name        = "slingshot-contrib"
   s.version     = Slingshot::Contrib::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["TODO: Write your name"]
-  s.email       = ["TODO: Write your email address"]
+  s.authors     = ["Karel Minarik"]
+  s.email       = ["karmi@karmi.cz"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{Contributions and additions to the Slingshot gem}
 
   s.rubyforge_project = "slingshot-contrib"
+
+  s.add_dependency "bundler", "~> 1.0.0"
+  s.add_dependency "slingshot-rb"
+
+  s.add_development_dependency "turn"
+  s.add_development_dependency "shoulda"
+  s.add_development_dependency "mocha"
+  s.add_development_dependency "sdoc"
+  s.add_development_dependency "rcov"
+
+  s.extra_rdoc_files  = [ "README.markdown", "MIT-LICENSE" ]
+  s.rdoc_options      = [ "--charset=UTF-8" ]
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
