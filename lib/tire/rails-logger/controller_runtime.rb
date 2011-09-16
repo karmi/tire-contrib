@@ -25,7 +25,7 @@ module Tire
       module ClassMethods
         def log_process_action(payload)
           messages, tire_runtime = super, payload[:tire_runtime]
-          messages << ("Tire: %.1fms" % tire_runtime.to_f) if tire_runtime
+          messages << ("Search: %.1fms" % tire_runtime.to_f) if tire_runtime
           messages
         end
       end

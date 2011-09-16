@@ -29,8 +29,7 @@ module Tire
   end
 end
 
-# Register with namespace 'tire', so event names look
-# like '*.tire', e.g. 'search.tire' will invoke the
-# search method in the LogSubscriber above.
+# Register with namespace 'tire', so event names look like '*.tire',
+# e.g. 'search.tire' will invoke the search method in the LogSubscriber above.
+#
 Tire::Rails::LogSubscriber.attach_to :tire
-

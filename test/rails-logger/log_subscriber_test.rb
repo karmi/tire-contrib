@@ -1,24 +1,30 @@
 require 'test_helper'
-require "active_support/log_subscriber/test_helper"
-require 'tire/rails/log_subscriber'
-require 'tire/rails/instrumentation'
+require 'active_record'
+require 'active_support/core_ext/module/aliasing'
+require 'active_support/log_subscriber/test_helper'
+require 'tire/rails-logger/log_subscriber'
+require 'tire/rails-logger/instrumentation'
+
+require File.expand_path('../active_record_article', __FILE__)
 
 module Tire
   module Rails
 
     class LogSubscriberTest < Test::Unit::TestCase
-      include Test::Integration
+
       include ActiveSupport::LogSubscriber::TestHelper
 
       def setup
         super
 
         # Make sure instrumentation wraps the perform method
+        #
         Tire::Search::Search.module_eval do
           include Tire::Rails::Instrumentation
         end
 
         # Attach log subscriber
+        #
         Tire::Rails::LogSubscriber.attach_to :tire
 
         ActiveRecord::Base.establish_connection( :adapter => 'sqlite3', :database => ":memory:" )
@@ -29,20 +35,6 @@ module Tire
             t.string   :title
             t.datetime :created_at, :default => 'NOW()'
           end
-          create_table :active_record_comments do |t|
-            t.string     :author
-            t.text       :body
-            t.references :article
-            t.timestamps
-          end
-          create_table :active_record_stats do |t|
-            t.integer    :pageviews
-            t.string     :period
-            t.references :article
-          end
-          create_table :active_record_class_with_tire_methods do |t|
-            t.string     :title
-          end
         end
 
         ActiveRecordArticle.destroy_all
@@ -51,7 +43,7 @@ module Tire
         1.upto(9) { |number| ActiveRecordArticle.create :title => "Test#{number}" }
         ActiveRecordArticle.index.refresh
 
-        load File.expand_path('../../models/active_record_models.rb', __FILE__)
+        load File.expand_path('../active_record_article.rb', __FILE__)
       end
 
       def teardown
