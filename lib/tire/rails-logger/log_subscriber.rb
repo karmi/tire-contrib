@@ -23,7 +23,7 @@ module Tire
         name    = "%s (%.1fms)" % [payload[:name], event.duration]
         query   = payload[:search].to_s.squeeze ' '
 
-        debug "  #{color(name, BLUE, true)}  #{query}"
+        debug "  #{color(name, YELLOW, true)}  #{query}"
       end
     end
   end
