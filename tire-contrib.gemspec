@@ -13,9 +13,9 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "tire-contrib"
 
-  s.add_dependency "bundler", "~> 1.0.0"
   s.add_dependency "tire"
 
+  s.add_development_dependency "bundler", "~> 1.0.0"
   s.add_development_dependency "turn"
   s.add_development_dependency "shoulda"
   s.add_development_dependency "mocha"
