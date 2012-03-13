@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "tire"
 
-  s.add_development_dependency "bundler", "~> 1.0.0"
+  s.add_development_dependency "bundler", "~> 1.1.0"
   s.add_development_dependency "turn"
   s.add_development_dependency "shoulda"
   s.add_development_dependency "mocha"
