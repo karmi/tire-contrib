@@ -58,7 +58,7 @@ module Tire
           ActiveRecordArticle.search '*', :load => true
           wait
           assert_equal 1, @logger.logged(:debug).size
-          assert_match /Tire/, @logger.logged(:debug).last
+          assert_match /Search \(\d+\.?\d*ms\)/, @logger.logged(:debug).last
         end
 
       end
