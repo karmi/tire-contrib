@@ -1,15 +1,27 @@
 Tire Contributed Components
 ================================
 
-Contributions, additions, extensions and other utilities for the [Tire](http://karmi.github.com/tire/)
-Rubygem for _ElasticSearch_.
+Extension, additions, other utilities for the [_Tire_](http://karmi.github.com/tire/)
+Rubygem for [_ElasticSearch_](http://www.elasticsearch.org/).
 
-See specific files or folders inside the `lib/tire` folder.
+Add this to your _Gemfile_:
 
-rails-logger
-------------
+    gem 'tire-contrib'
 
-Adds support for displaying Tire related statistics to Rails' log.
+Then require the component you want to use in your application initializer. For example:
+
+    require 'tire/rails/logger'
+
+See specific files and folders inside the `lib/tire` folder for instructions and documentation.
+
+
+### More Like This Queries ###
+
+Adds support for [“more like this”](http://www.elasticsearch.org/guide/reference/query-dsl/mlt-query.html) queries.
+
+### Rails Logger ###
+
+Adds support for displaying Tire related statistics in the Rails' log.
 
 -----
 
