@@ -1,5 +1,5 @@
 require 'tire'
-require 'tire/more_like_this'
+require 'tire/queries/more_like_this'
 require 'shoulda'
 
 module Tire

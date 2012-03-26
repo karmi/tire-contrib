@@ -14,7 +14,7 @@
 #
 # Require the component:
 #
-#     require 'tire/more_like_this'
+#     require 'tire/queries/more_like_this'
 #
 # From that point on you should have the more_like_this (aliased to mlt) and
 # the more_like_this_field (aliased to mlt_field) queries available.
@@ -36,7 +36,7 @@
 # * <http://www.elasticsearch.org/guide/reference/query-dsl/mlt-field-query.html>
 #
 #
-require 'tire/more_like_this/more_like_this'
+require 'tire/queries/more_like_this/more_like_this'
 
 Tire::Search::Query.class_eval do
   include Tire::Search::MoreLikeThis
