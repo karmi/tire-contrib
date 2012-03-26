@@ -19,6 +19,9 @@ Gem::Specification.new do |s|
   s.add_development_dependency "turn"
   s.add_development_dependency "shoulda"
   s.add_development_dependency "mocha"
+  s.add_development_dependency "activerecord"
+  s.add_development_dependency "activesupport"
+  s.add_development_dependency "sqlite3"
 
   s.extra_rdoc_files  = [ "README.markdown", "MIT-LICENSE" ]
   s.rdoc_options      = [ "--charset=UTF-8" ]
