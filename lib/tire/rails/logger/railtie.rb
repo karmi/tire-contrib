@@ -3,9 +3,9 @@ module Tire
     class Railtie < ::Rails::Railtie
 
       initializer "tire.initializer" do |app|
-        require 'tire/rails-logger/instrumentation'
-        require 'tire/rails-logger/log_subscriber'
-        require 'tire/rails-logger/controller_runtime'
+        require 'tire/rails/logger/instrumentation'
+        require 'tire/rails/logger/log_subscriber'
+        require 'tire/rails/logger/controller_runtime'
 
         # Inject instrumentation into Tire::Search
         #

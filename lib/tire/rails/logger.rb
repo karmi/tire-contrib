@@ -14,7 +14,7 @@
 #
 # Require the component in your `application.rb`:
 #
-#     require 'tire/rails-logger'
+#     require 'tire/rails/logger'
 #
 # You should see an output like this in your application log:
 #
@@ -27,4 +27,4 @@
 #     Completed 200 OK in 63ms (Views: 53.7ms | ActiveRecord: 1.8ms | Tire: 6.7ms)
 #
 #
-require 'tire/rails-logger/railtie'
+require 'tire/rails/logger/railtie'
