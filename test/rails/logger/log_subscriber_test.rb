@@ -2,8 +2,8 @@ require 'test_helper'
 require 'active_record'
 require 'active_support/core_ext/module/aliasing'
 require 'active_support/log_subscriber/test_helper'
-require 'tire/rails-logger/log_subscriber'
-require 'tire/rails-logger/instrumentation'
+require 'tire/rails/logger/log_subscriber'
+require 'tire/rails/logger/instrumentation'
 
 require File.expand_path('../active_record_article', __FILE__)
 
