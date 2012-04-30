@@ -19,6 +19,10 @@ See specific files and folders inside the `lib/tire` folder for instructions and
 
 Adds support for [“more like this”](http://www.elasticsearch.org/guide/reference/query-dsl/mlt-query.html) queries.
 
+### Custom Filters Score ###
+
+Adds support for [“custom filters score”](http://www.elasticsearch.org/guide/reference/query-dsl/custom-filters-score-query.html) queries.
+
 ### Rails Logger ###
 
 Adds support for displaying Tire related statistics in the Rails' log.
