@@ -1,0 +1,16 @@
+# -----------------------------------------------------------------
+# Configuration file for http://travis-ci.org/#!/karmi/tire-contrib
+# -----------------------------------------------------------------
+
+language: ruby
+
+rvm:
+  - 1.9.3
+
+script: "bundle exec rake test"
+
+before_install:
+  - sudo service elasticsearch start
+
+notifications:
+  disable: true
