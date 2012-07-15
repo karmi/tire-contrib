@@ -3,9 +3,7 @@
 #
 # Author: Karel Minarik <karmi@karmi.cz>
 #
-#
 # Adds instrumentation support for the [NewRelic](http://newrelic.com) application performance management tool.
-#
 #
 # Usage:
 # ------
@@ -23,15 +21,40 @@
 #       include Tire::Model::NewRelic unless Rails.env.test?
 #     end
 #
-# See the statistics in the "Diagnostics > Transaction Traces" page at NewRelic.
+# You'll find the statistics in the "Diagnostics > Transaction Traces" page at NewRelic.
+# See an example image here: <https://img.skitch.com/20120713-t5knmkxnu8r9n6iu156phitdfp.png>
 #
+# Often, you perform multiple search requests in your application, eg. within a Rails controller action.
+# Currently, all these search requests are bundled into one metric.
+# To measure individual search requests, you have to use the custom NewRelic instrumentation:
+#
+#     class ArticlesController < ApplicationController
+#       extend NewRelic::Agent::MethodTracer
+#       # ...
+#       def index
+#         self.class.trace_execution_scoped(['ArticlesController/Index/main_search']) do
+#           @articles = Article.search do |search|
+#             # ...
+#           end
+#         end
+#
+#         self.class.trace_execution_scoped(['ArticlesController/Index/category_facets']) do
+#           # ...
+#         end
+#         # ...
+#
+#         respond_with(@articles)
+#       end
+#     end
+#
+# See <https://newrelic.com/docs/ruby/ruby-custom-metric-collection#example_blocks> for more information.
 #
 # TODO
 # ----
 #
 # * Implement tracing for searches via the proxy object (`MyModel.tire.search ...`)
 # * Implement tracing for `update_index` via `after_save` callbacks (again, proxied)
-#
+# * Implement tracing for different search queries, if possible
 #
 # More Information:
 # -----------------
