@@ -9,11 +9,11 @@
 # ------
 #
 # For tracing Tire::Index and Tire::DSL method calls, just require the component
-# (eg. in the Ruby On Rails initialize):
+# (eg. in a Ruby On Rails initializer):
 #
 #     require 'tire/new_relic/instrumentation'
 #
-# To use tracing search calls in the ActiveModel model integration, in addition
+# For tracing search calls in the ActiveModel model integration, in addition
 # to requiring the component, include the tracing module in your model:
 #
 #     class MyModel
