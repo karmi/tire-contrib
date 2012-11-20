@@ -33,6 +33,12 @@ For activation test mode you need add line:
 
     require 'tire/test_helper'
 
+If you are using bundler better choise will be:
+
+    group :test
+      gem 'tire-contrib', :require => ['tire/test_helper']
+    end
+
 This helper will stop automatic updating tire index which make your test faster. In test where you want to use elasticsearch
 you need use special block. It recreate all indexes for clearing any old data and allow automatic index updating. After exiting block,
 all indexes will be erased. For example:
