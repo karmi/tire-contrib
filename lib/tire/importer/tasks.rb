@@ -27,13 +27,14 @@ namespace :tire do
       end
 
       index = ENV['INDEX'] || File.basename(ENV['INPUT'], '.*') rescue nil
+      host  = ENV['URL']   || 'http://localhost:9200'
 
       if index.to_s.empty?
         puts "[!] ERROR. Please provide the index name or filename as input."
         exit 1
       end
 
-      importer = Tire::Importer::Importer.new(input: input, index: index)
+      importer = Tire::Importer::Importer.new(input: input, index: index, host: host)
       importer.perform!
     end
 

@@ -11,6 +11,7 @@ module Tire
 
       def initialize(options={})
         @input      = options[:input]
+        @host       = options[:host]
         @index      = options[:index]
         @batch_size = options[:batch_size] || 1_000
         @total      = 0
@@ -18,14 +19,18 @@ module Tire
 
         raise ArgumentError, "options[:input] missing" unless @input
         raise ArgumentError, "options[:index] missing" if @index.empty?
-
-        Tire.configure do
-          client Tire::HTTP::Client::Curb
-        end
       end
 
       def perform!
+        host  = @host
+        Tire.configure do
+          url    host
+          client Tire::HTTP::Client::Curb
+          logger STDERR
+        end
+
         index = Tire.index(@index)
+
         if @disable_refresh
           @refresh_interval = index.settings['index.refresh_interval']
           Tire::Configuration.client.put [index.url, '_settings'].join('/'),
@@ -47,7 +52,6 @@ module Tire
         @batch_nr, @buffer = 1, []
 
         @input.each &method(:process)
-        Process.waitall
 
         store_batch @buffer unless @buffer.empty?
 
