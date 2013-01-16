@@ -27,6 +27,10 @@ Adds support for [“custom filters score”](http://www.elasticsearch.org/guide
 
 Adds support for displaying Tire related statistics in the Rails' log.
 
+### Namespace ###
+
+Adds support for namespace all Index's of an Application
+
 -----
 
 [Karel Minarik](http://karmi.cz) and [contributors](http://github.com/karmi/tire-contrib/contributors)
