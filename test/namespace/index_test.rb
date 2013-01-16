@@ -16,6 +16,14 @@ module Tire
             assert_equal "foo-bar", Tire.index("bar").name
           end
 
+          should "return the name with an namespace (with block)" do
+            Tire.configure { namespace "foo" }
+            index = Tire.index("xxx") do
+              @name = "bar"
+            end
+            assert_equal "foo-bar", index.name
+          end
+
           should "return the name without an namespace" do
             assert_equal "bar", Tire.index("bar").name
           end
