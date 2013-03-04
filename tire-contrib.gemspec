@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
   s.name        = "tire-contrib"
   s.version     = Tire::Contrib::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Karel Minarik", "Oliver Eilhard"]
-  s.email       = ["karmi@karmi.cz", "oliver.eilhard@gmail.com"]
+  s.authors     = ["Karel Minarik", "Oliver Eilhard", "Dave Kinkead"]
+  s.email       = ["karmi@karmi.cz", "oliver.eilhard@gmail.com", "dave@kinkead.com.au"]
   s.homepage    = ""
   s.summary     = %q{Contributions and additions for the Tire gem}
 
