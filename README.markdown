@@ -15,6 +15,10 @@ Then require the component you want to use in your application initializer. For 
 See specific files and folders inside the `lib/tire` folder for instructions and documentation.
 
 
+### Dynamic Persistence ###
+
+Adds support for dynamic attributes when using Tire::Model::Persistence so that model properties no longer need to be declared explicitly. [More info](lib/tire/model/dynamic_persistence).
+
 ### More Like This Queries ###
 
 Adds support for [“more like this”](http://www.elasticsearch.org/guide/reference/query-dsl/mlt-query.html) queries.
