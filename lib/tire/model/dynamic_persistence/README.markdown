@@ -13,16 +13,14 @@ Require the module in your model file
 Include Persistence and DynamicPersistence
 
 	 class Author
-
 	   include Tire::Model::Persistence
 	   include Tire::Model::DynamicPersistence
 	 end
 
 Then create your model by passing it a hash of key:value pairs
 
-	 author = Author.new :name => 'Inigo Montoya', 
+	 author = Author.new :name => 'Inigo Montoya',
 	                     :books => ['The Pragmatic Swordfighter', 'Revenge: Best Served Cold']
 
-	 author.name 
+	 author.name
 	 # => 'Inigo Montoya'
-

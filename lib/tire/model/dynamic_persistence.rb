@@ -4,8 +4,8 @@
 # Author: Dave Kinkead <dave@kinkead.com.au>
 #
 #
-# Adds support for dynamic persistence to Tire::Model::Persistence so that explict 
-#   declarations of 'property :attr_name' are not required
+# Adds support for dynamic persistence to Tire::Model::Persistence,
+# so explicit declarations of `property :attr_name` are not required.
 #
 #
 # Usage:
@@ -19,15 +19,14 @@
 # -------
 #
 #     class Author
-#
 #       include Tire::Model::Persistence
 #       include Tire::Model::DynamicPersistence
 #     end
 #
-#     author = Author.new :name => 'Inigo Montoya', 
+#     author = Author.new :name => 'Inigo Montoya',
 #                         :books => ['The Pragmatic Swordfighter', 'Revenge: Best Served Cold']
 #
-#     author.name 
+#     author.name
 #     # => 'Inigo Montoya'
 #
 #
