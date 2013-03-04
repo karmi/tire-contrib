@@ -260,7 +260,23 @@ module Tire
 
           should "have attribute names" do
             article = PersistentArticle.new :title => 'Test', :tags => ['one', 'two']
-            assert_equal ['published_on', 'tags', 'title'], article.attribute_names
+            #
+            # Changed this test as DynamicPersistence accepts elasticsearch meta_attributes
+            #   as attribute_names on creation.
+            #
+            # assert_equal ['published_on', 'tags', 'title'], article.attribute_names
+            #
+            assert_equal ["_explanation",
+                           "_index",
+                           "_score",
+                           "_type",
+                           "_version",
+                           "highlight",
+                           "id",
+                           "published_on",
+                           "sort",
+                           "tags",
+                           "title"], article.attribute_names
           end
 
           should "have setter method for attribute" do
