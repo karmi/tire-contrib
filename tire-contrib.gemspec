@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
   s.name        = "tire-contrib"
   s.version     = Tire::Contrib::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Karel Minarik", "Oliver Eilhard", "Dave Kinkead"]
-  s.email       = ["karmi@karmi.cz", "oliver.eilhard@gmail.com", "dave@kinkead.com.au"]
+  s.authors     = ["Karel Minarik", "Oliver Eilhard", "Dave Kinkead", "Sergey Efremov"]
+  s.email       = ["karmi@karmi.cz", "oliver.eilhard@gmail.com", "dave@kinkead.com.au", "efremov.sergey@gmail.com"]
   s.homepage    = ""
   s.summary     = %q{Contributions and additions for the Tire gem}
 
@@ -18,6 +18,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency "bundler", "~> 1.1"
 
   s.add_development_dependency "newrelic_rpm"
+
+  s.add_development_dependency "active_model_serializers"
 
   s.add_development_dependency "turn"
   s.add_development_dependency "shoulda"
