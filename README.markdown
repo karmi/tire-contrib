@@ -23,6 +23,10 @@ Adds support for dynamic attributes when using Tire::Model::Persistence so that 
 
 Adds support for [“more like this”](http://www.elasticsearch.org/guide/reference/query-dsl/mlt-query.html) queries.
 
+### Fuzzy Like This Queries ###
+
+Adds support for [“fuzzy like this”](http://www.elasticsearch.org/guide/reference/query-dsl/flt-query.html) queries.
+
 ### Custom Filters Score ###
 
 Adds support for [“custom filters score”](http://www.elasticsearch.org/guide/reference/query-dsl/custom-filters-score-query.html) queries.
