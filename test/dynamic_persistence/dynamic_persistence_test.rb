@@ -42,6 +42,37 @@ module Tire
           assert_equal [], @article.tags
         end
 
+        should 'allow new attributes to be defined' do
+          @article = PersistentArticleWithDynamicCreation.new :name => 'Elasticsearch',
+                                                              :title => 'You know, for Search!'
+          @article.set_attribute(:reason, 'Just because!')
+
+          assert_nothing_raised do
+            assert_equal 'Just because!', @article.reason
+          end
+        end
+
+        should 'allow existing attributes to be re-defined' do
+          @article = PersistentArticleWithDynamicCreation.new :name => 'Elasticsearch',
+                                                              :title => 'You know, for Search!',
+                                                              :reason => 'Just because!'
+          @article.set_attribute(:reason, 'New value!')
+
+          assert_nothing_raised do
+            assert_equal 'New value!', @article.reason
+          end
+        end
+
+        should 'allow attributes to be set in a batch' do
+          @article = PersistentArticleWithDynamicCreation.new :name => 'Elasticsearch',
+                                                              :title => 'You know, for Search!'
+          @article.set_attributes({:title => 'New title', :rating => 5})
+          assert_nothing_raised do
+            assert_equal 'New title', @article.title
+            assert_equal 5, @article.rating
+          end
+        end
+
       end
 
     end
