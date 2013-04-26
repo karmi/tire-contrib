@@ -89,6 +89,18 @@ module Tire
           end
         end
 
+        should "allow setting params" do
+          query = Query.new.custom_filters_score do
+            query { term :foo, 'bar' }
+            params :a => 'b'
+          end
+
+          query[:custom_filters_score].tap do |f|
+            assert_equal( { :term => { :foo => { :term => 'bar' } } }, f[:query].to_hash )
+            assert_equal( {:a => 'b'}, f[:params])
+          end
+        end
+
       end
     end
     
