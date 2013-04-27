@@ -95,10 +95,9 @@ module Tire
             params :a => 'b'
           end
 
-          query[:custom_filters_score].tap do |f|
-            assert_equal( { :term => { :foo => { :term => 'bar' } } }, f[:query].to_hash )
-            assert_equal( {:a => 'b'}, f[:params])
-          end
+          f = query[:custom_filters_score]
+          assert_equal( { :term => { :foo => { :term => 'bar' } } }, f[:query].to_hash )
+          assert_equal( { :a => 'b' }, f[:params] )
         end
 
       end
