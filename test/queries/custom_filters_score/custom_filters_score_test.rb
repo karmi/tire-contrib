@@ -99,9 +99,46 @@ module Tire
           assert_equal( { :term => { :foo => { :term => 'bar' } } }, f[:query].to_hash )
           assert_equal( { :a => 'b' }, f[:params] )
         end
+      end
 
+      context 'CustomFiltersScore Integration' do
+        context 'Query for "volmer", scored by "created_at"' do
+          current_timestamp = Time.now.to_i * 1000
+          score_script = "((0.08 / ((3.16*pow(10,-11)) * abs(now - doc['created_at'].date.getMillis()) + 0.05)))"
+
+          query = Query.new.custom_filters_score do
+            query { string 'volmer' }
+
+            params :now => current_timestamp
+
+            filter do
+              filter :exists, :field => 'created_at'
+              script score_script
+            end
+          end
+
+          f = query[:custom_filters_score]
+
+          should 'query for "volmer"' do
+            assert_equal( { :query => 'volmer' }, f[:query][:query_string] )
+          end
+
+          should 'assing the "now" param with the current timestamp' do
+            assert_equal( current_timestamp, f[:params][:now] )
+          end
+
+          context 'filters list' do
+            should 'include an "exists" filter for the field "created_at"' do
+              filter = f[:filters].first[:filter]
+              assert_equal( { :field => 'created_at' }, filter[:exists] )
+            end
+
+            should 'include the score script in the filter' do
+              assert_equal( score_script, f[:filters].first[:script] )
+            end
+          end
+        end
       end
     end
-    
   end
 end
