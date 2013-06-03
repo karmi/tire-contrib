@@ -26,23 +26,4 @@ require 'tire/namespace/configuration'
 module Tire
   Index.send :include, Tire::Namespace::Index
   Configuration.send :extend, Tire::Namespace::Configuration
-  # Index.class_eval do
-  #   include Tire::Namespace::Index
-  #   extend Tire::Namespace::Index
-  # end
-
-  # Configuration.class_eval do
-  #   extend Tire::Namespace::Configuration
-  # end
-
-  # class Index
-  #   # def initialize(name, &block)
-  #   #   require 'pry'
-  #   #   binding.pry
-  #   #   @name = Tire::Configuration.namespace ? "#{Tire::Configuration.namespace}-#{name}" : name
-  #   #   block.arity < 1 ? instance_eval(&block) : block.call(self) if block_given?
-  #   # end
-  #   include Tire::Namespace::Index
-  #   extend Tire::Namespace::Index
-  # end
 end
