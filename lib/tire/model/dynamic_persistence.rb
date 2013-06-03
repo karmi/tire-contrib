@@ -2,7 +2,8 @@
 # ===================
 #
 # Author: Dave Kinkead <dave@kinkead.com.au>
-#
+# Contributors:
+# Matthew Hirst (SixiS)
 #
 # Adds support for dynamic persistence to Tire::Model::Persistence,
 # so explicit declarations of `property :attr_name` are not required.
@@ -29,5 +30,16 @@
 #     author.name
 #     # => 'Inigo Montoya'
 #
+#     author.rating = 5
+#
+#     author.rating
+#     # => 5
+#
+#     author.update_attributes({publisher: 'GoodBooks', home_town: 'Worcester'})
+#
+#     author.publisher
+#     # => 'GoodBooks'
+#     author.home_town
+#     # => 'Worcester'
 #
 require 'tire/model/dynamic_persistence/dynamic_persistence'

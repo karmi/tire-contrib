@@ -36,6 +36,14 @@ A single attribute
      author.rating
      # => 5
 
+     author[:another_attribute] = 'test'
+     author.another_attribute
+     # => 'test'
+
+     author.last_attribute = 'something else'
+     author.last_attribute
+     # => 'something else'
+
 Multiple attributes
 
      author = Author.new :name => 'Inigo Montoya',
@@ -46,3 +54,9 @@ Multiple attributes
      # => 'Somewhere'
      author.rating
      # => 5
+
+     author.update_attributes({:fame => 'lots', :foo => 'bar'})
+     author.fame
+     # => 'lots'
+     author.foo
+     # => 'bar'
