@@ -10,8 +10,6 @@ rvm:
   - 2.0.0
   - jruby-19mode
 
-script: "bundle exec rake test"
-
 before_install:
   - sudo service elasticsearch start
 
