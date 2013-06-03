@@ -73,6 +73,36 @@ module Tire
           end
         end
 
+        should 'be able to set attributes using []=' do
+          @article = PersistentArticleWithDynamicCreation.new :name => 'Elasticsearch',
+                                                              :title => 'You know, for Search!'
+          @article[:set_using_brackets] = "New value!"
+
+          assert_nothing_raised do
+            assert_equal 'New value!', @article.set_using_brackets
+          end
+        end
+
+        should 'be able to set attributes using ruby accessors' do
+          @article = PersistentArticleWithDynamicCreation.new :name => 'Elasticsearch',
+                                                              :title => 'You know, for Search!'
+          @article.set_using_ruby = "New value!"
+
+          assert_nothing_raised do
+            assert_equal 'New value!', @article.set_using_ruby
+          end
+        end
+
+        should 'be able to set new and existing attributes with update_attributes' do
+          @article = PersistentArticleWithDynamicCreation.new :name => 'Elasticsearch',
+                                                              :title => 'You know, for Search!'
+          @article.update_attributes({:title => 'New title', :set_using_update_attributes => 'Awesome!'})
+          assert_nothing_raised do
+            assert_equal 'New title', @article.title
+            assert_equal 'Awesome!', @article.set_using_update_attributes
+          end
+        end
+
       end
 
     end

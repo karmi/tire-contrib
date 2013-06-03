@@ -25,6 +25,19 @@ module Tire
         # => set instance variable for this attribute
         instance_variable_set("@#{attribute}", value)
       end
+
+      def []=(attribute, value)
+        set_attribute(attribute, value)
+      end
+
+      def method_missing(meth, *args, &block)
+        if meth.to_s =~ /(.+)=$/
+          set_attribute($1, args.first)
+        else
+          super
+        end
+      end
+
     end
   end
 end
