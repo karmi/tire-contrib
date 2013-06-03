@@ -64,6 +64,11 @@ module Tire
           @value
         end
 
+        def params(value)
+          @value[:params] = value
+          @value
+        end
+
         def to_hash
           @value[:filters] ? 
           @value : 
