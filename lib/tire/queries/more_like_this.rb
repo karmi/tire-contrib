@@ -39,5 +39,5 @@
 require 'tire/queries/more_like_this/more_like_this'
 
 Tire::Search::Query.class_eval do
-  include Tire::Search::MoreLikeThis
+  include Tire::Search::MoreLikeThis::Query
 end
