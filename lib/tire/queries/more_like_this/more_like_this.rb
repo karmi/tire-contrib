@@ -27,6 +27,27 @@ module Tire
           options.delete_if { |key, value| !valid_options.member? key }
         end
       end
+
+      class Search < Tire::Search::Search
+
+        attr_reader :document_id
+
+        def initialize(indices=nil, document_id=nil, options={}, &block)
+          if indices.is_a?(Hash)
+            set_indices_options(indices)
+            @indices = indices.keys
+          else
+            @indices = Array(indices)
+          end
+          @types   = Array(options.delete(:type)).map { |type| Utils.escape(type) }
+          @options = options
+          @document_id = document_id
+
+          @path    = ['/', @indices.join(','), @types.join(','), @document_id, '_mlt'].compact.join('/').squeeze('/')
+
+          block.arity < 1 ? instance_eval(&block) : block.call(self) if block_given?
+        end
+      end
     end
   end
 end
