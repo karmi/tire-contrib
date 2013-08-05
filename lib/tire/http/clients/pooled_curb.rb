@@ -14,6 +14,9 @@ require 'curb'
 #     require 'curb'
 #     require 'tire/http/clients/pooled_curb'
 #
+#     Tire::HTTP::Client::PooledCurbConfiguration.instance.retries = 1
+#     Tire::HTTP::Client::PooledCurbConfiguration.instance.timeout = 2
+#
 #     Tire.configure do
 #       client Tire::HTTP::Client::PooledCurb
 #     end
@@ -28,8 +31,24 @@ module Tire
         end
       end
 
+      class PooledCurbConfiguration
+        include Singleton
+
+        attr_writer :retries, :timeout
+
+        def retries
+          @retries || 3
+        end
+
+        def timeout
+          @timeout || 15
+        end
+      end
+
       class PooledCurb
-        HTTP_CLIENT_POOL = CommonPool::ObjectPool.new(PooledCurbDataSource.new) { |config| config.max_active = 200 }
+        HTTP_CLIENT_POOL = CommonPool::ObjectPool.new(PooledCurbDataSource.new) do |config|
+          config.max_active = 200
+        end
 
         def self.with_client
           curl = HTTP_CLIENT_POOL.borrow_object
@@ -46,10 +65,7 @@ module Tire
         def self.get(url, data=nil)
           response = nil
 
-          3.times do |tries|
-            # Sleep for 0.2 seconds after the second failure
-            Kernel.sleep(0.2) if tries > 1
-
+          PooledCurbConfiguration.instance.retries.times do |tries|
             begin
               response = get_once(url, data)
               if block_given?
@@ -60,7 +76,7 @@ module Tire
 
               return response
             rescue Curl::Err::CurlError
-              # will retry
+              # Retry the request.
             end
           end
 
@@ -69,7 +85,7 @@ module Tire
 
         def self.get_once(url, data=nil)
           with_client do |curl|
-            curl.timeout = 15
+            curl.timeout = PooledCurbConfiguration.instance.timeout
             curl.url = url
             if data
               curl.post_body = data
@@ -83,7 +99,7 @@ module Tire
 
         def self.post(url, data)
           with_client do |curl|
-            curl.timeout = 15
+            curl.timeout = PooledCurbConfiguration.instance.timeout
             curl.url = url
             curl.post_body = data
             curl.http_post
@@ -93,7 +109,7 @@ module Tire
 
         def self.put(url, data)
           with_client do |curl|
-            curl.timeout = 15
+            curl.timeout = PooledCurbConfiguration.instance.timeout
             curl.url = url
             curl.http_put data
             Response.new curl.body_str, curl.response_code
@@ -102,7 +118,7 @@ module Tire
 
         def self.delete(url)
           with_client do |curl|
-            curl.timeout = 15
+            curl.timeout = PooledCurbConfiguration.instance.timeout
             curl.url = url
             curl.http_delete
             Response.new curl.body_str, curl.response_code
@@ -111,7 +127,7 @@ module Tire
 
         def self.head(url)
           with_client do |curl|
-            curl.timeout = 15
+            curl.timeout = PooledCurbConfiguration.instance.timeout
             curl.url = url
             curl.http_head
             Response.new curl.body_str, curl.response_code
