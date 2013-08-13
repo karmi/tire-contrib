@@ -20,7 +20,7 @@ module Tire
 
       private
       def validate_fuzzy_like_this_options(options)
-        valid_options = [:fields, :ingore_tf, :max_query_terms, :min_similarity, :prefix_length, :boost, :analyzer]
+        valid_options = [:fields, :ignore_tf, :max_query_terms, :min_similarity, :prefix_length, :boost, :analyzer]
         options.delete_if { |key, value| !valid_options.member? key }
       end
     end
