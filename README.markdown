@@ -29,7 +29,7 @@ Adds support for [“fuzzy like this”](http://www.elasticsearch.org/guide/refe
 
 ### Wildcard Queries ###
 
-Adds support for [“wildcard”](http://http://www.elasticsearch.org/guide/reference/query-dsl/wildcard-query/) queries.
+Adds support for [“wildcard”](http://www.elasticsearch.org/guide/reference/query-dsl/wildcard-query/) queries.
 
 ### Custom Filters Score ###
 
