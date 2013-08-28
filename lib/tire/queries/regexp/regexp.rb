@@ -18,7 +18,12 @@ module Tire
       
       def validate_regexp_flags(flags = [])
         valid_flags = [:all, :anystring, :automaton, :complement, :empty, :intersection, :interval, :none]
-        (flags.map { |i| i.downcase.to_sym } & valid_flags).map { |i| i.to_s.upcase }.join('|')
+        
+        if flags.is_a?(Array)
+          (flags.map { |i| i.downcase.to_sym } & valid_flags).map { |i| i.to_s.upcase }.join('|')
+        else
+          flags.to_s.upcase if valid_flags.member?(flags)
+        end
       end
     end
   end

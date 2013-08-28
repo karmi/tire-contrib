@@ -20,6 +20,11 @@ module Tire
           assert_equal({:regexp => {'name.first' => { :value => 's.*y', :flags => 'INTERSECTION|COMPLEMENT|EMPTY'}}},
                       Query.new.regexp('name.first', 's.*y', :flags => [:intersection, :complement, :empty]))
         end
+        
+        should "allow to pass in only one flag" do
+          assert_equal({:regexp => {'name.first' => { :value => 's.*y', :flags => 'ALL' }}},
+                      Query.new.regexp('name.first', 's.*y', :flags => :all))
+        end
       end
       
       context "validate the options passed" do
