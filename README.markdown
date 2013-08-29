@@ -27,6 +27,10 @@ Adds support for [“more like this”](http://www.elasticsearch.org/guide/refer
 
 Adds support for [“fuzzy like this”](http://www.elasticsearch.org/guide/reference/query-dsl/flt-query.html) queries.
 
+### Regular Expression Queries ###
+
+Adds support for [“regexp”](http://www.elasticsearch.org/guide/reference/query-dsl/regexp-query/) queries.
+
 ### Custom Filters Score ###
 
 Adds support for [“custom filters score”](http://www.elasticsearch.org/guide/reference/query-dsl/custom-filters-score-query.html) queries.
