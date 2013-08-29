@@ -30,7 +30,7 @@
 #
 #     Tire.search 'articles' do
 #       query do
-#         wildcard "name.first", 's.*y', boost: 1.2, flags: [:intersection, :complement, :empty]
+#         regexp "name.first", 's.*y', boost: 1.2, flags: [:intersection, :complement, :empty]
 #       end
 #     end
 #
