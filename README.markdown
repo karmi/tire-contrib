@@ -39,6 +39,10 @@ Adds support for displaying Tire related statistics in the Rails' log.
 
 Adds support for namespace all Index's of an Application
 
+### Dynamic Templates ###
+
+Adds support for ["dynamic templates"](http://www.elasticsearch.org/guide/reference/mapping/root-object-type/).
+
 -----
 
 [Karel Minarik](http://karmi.cz) and [contributors](http://github.com/karmi/tire-contrib/contributors)
