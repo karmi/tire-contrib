@@ -1,7 +1,7 @@
 Tire Contributed Components
 ================================
 
-Extension, additions, other utilities for the [_Tire_](http://karmi.github.com/tire/)
+Extension, additions, other utilities for the [_Tire_](https://github.com/karmi/retire)
 Rubygem for [_ElasticSearch_](http://www.elasticsearch.org/).
 
 Add this to your _Gemfile_:
