@@ -31,6 +31,10 @@ Adds support for [“fuzzy like this”](http://www.elasticsearch.org/guide/refe
 
 Adds support for [“custom filters score”](http://www.elasticsearch.org/guide/reference/query-dsl/custom-filters-score-query.html) queries.
 
+### Constant Score Query ###
+
+Adds support for [“constant score query”](http://www.elasticsearch.org/guide/reference/query-dsl/constant-score-query.html) queries.
+
 ### Rails Logger ###
 
 Adds support for displaying Tire related statistics in the Rails' log.
